@@ -1,0 +1,18 @@
+{
+  "stbiPanelTitle": "Drug reference search",
+  "stbiPanelSubtitle": "BM25 ranking over {{count}} clinical profiles",
+  "stbiSearchPlaceholder": "Search by condition, e.g. \"hypertension\"",
+  "stbiDisclaimer": "External reference for education only. Not this facility's formulary, and not a prescribing recommendation.",
+  "stbiNoResults": "No drug reference entries for \"{{term}}\"",
+  "stbiError": "Drug reference service unavailable",
+  "stbiInFormulary": "In formulary",
+  "stbiBrands": "{{count}} brands",
+  "stbiSideEffects": "Side effects",
+  "stbiSubstitutes": "Substitutes",
+  "stbiScore": "score",
+  "stbiHabitForming": "Habit forming",
+  "stbiShowMore": "Show more",
+  "stbiSearching": "Searching",
+  "stbiMatchCount": "{{count}} matching documents",
+  "stbiBrandNameTitle": "brand name"
+}

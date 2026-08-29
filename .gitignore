@@ -1,0 +1,16 @@
+.DS_Store
+**/.DS_Store
+
+# Kaggle 250k Medicines dataset (89 MB) - download separately, see stbi/README.md
+medicine_dataset.csv
+
+# Dependencies and build output
+**/node_modules/
+stbi/frontend/dist/
+**/target/
+
+# Upstream OpenMRS distro clone (github.com/openmrs/openmrs-distro-referenceapplication)
+# Only the files added for this project are tracked.
+openmrs-distro-referenceapplication/*
+!openmrs-distro-referenceapplication/docker-compose.stbi.yml
+!openmrs-distro-referenceapplication/.env

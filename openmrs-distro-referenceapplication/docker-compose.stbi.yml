@@ -1,0 +1,28 @@
+# Lapisan tambahan untuk modul STBI. Digabungkan dengan docker-compose.yml
+# lewat COMPOSE_FILE pada .env, sehingga `docker compose up -d` biasa sudah
+# menyertakan seluruh modul tanpa flag tambahan.
+services:
+  stbi:
+    build: ../stbi/service
+    image: stbi-search:1.0.0
+    restart: "unless-stopped"
+    volumes:
+      - ../stbi/data:/data:ro
+
+  gateway:
+    depends_on:
+      - stbi
+    volumes:
+      # Menambahkan rute /openmrs/ws/rest/v1/stbi/ ke layanan pencarian.
+      # Yang dipasang adalah TEMPLATE-nya: entrypoint gateway menyalin berkas
+      # ini ke /etc/nginx/templates lalu menjalankan envsubst. Memasang hasil
+      # akhirnya (conf.d/default.conf) membuat entrypoint gagal menulis.
+      - ../stbi/gateway/default.conf.template:/etc/nginx/conf-templates/default.conf.template:ro
+
+  frontend:
+    volumes:
+      # Microfrontend panel BM25, plus importmap dan registry rute yang sudah
+      # ditambahi entri aplikasi baru.
+      - ../stbi/frontend/dist:/usr/share/nginx/html/openmrs-esm-stbi-app-1.0.0:ro
+      - ../stbi/frontend/generated/importmap.json:/usr/share/nginx/html/importmap.json:ro
+      - ../stbi/frontend/generated/routes.registry.json:/usr/share/nginx/html/routes.registry.json:ro
